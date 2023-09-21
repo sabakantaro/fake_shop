@@ -2,7 +2,7 @@ import ProductItem from './productItem.js';
 
 const url = 'https://fakestoreapi.com/products';
 
-export class ProductList {
+export default class ProductList {
   constructor() {
     this.products = [];
   }
