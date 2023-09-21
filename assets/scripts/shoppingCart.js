@@ -1,13 +1,6 @@
-export default class ShoppingCart {
+class ShoppingCart {
   constructor() {
     this.items = [];
-  }
-
-  static getInstance() {
-    if (!this.instance) {
-      this.instance = new ShoppingCart();
-    }
-    return this.instance;
   }
 
   getTotal() {
@@ -42,12 +35,17 @@ export default class ShoppingCart {
 
     const orderButton = cartSection.querySelector('button');
     orderButton.addEventListener('click', () => {
+      if (this.items.length === 0) {
+        window.alert('No products in cart!');
+        return;
+      }
       this.items = [];
-      const total = cartSection.querySelector('h2');
-      total.textContent = `Total: $${this.getTotal()}`;
+      this.setTotal();
 
       window.alert('Order placed!');
     });
     return cartSection;
   }
 }
+
+export default new ShoppingCart();

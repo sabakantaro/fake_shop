@@ -1,16 +1,16 @@
 import Shop from './shop.js';
-import ProductItem from './productItem.js';
+import Cart from './shoppingCart.js';
 
-class App {
+export default class App {
   static init() {
     const shop = new Shop();
     shop.render();
     this.addProductToCart();
   }
 
-  static addProductToCart() {
-    const productItem = new ProductItem();
-    productItem.addToCart();
+  static addProductToCart(product) {
+    const cart = Cart;
+    cart.addProduct(product);
   }
 }
 

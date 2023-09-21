@@ -1,16 +1,22 @@
-import ShoppingCart from './shoppingCart.js';
+import Product from './product.js';
+import App from './app.js';
 
 export default class ProductItem {
   constructor(product) {
-    this.product = product;
+    this.product = new Product(
+      product.id,
+      product.title,
+      product.price,
+      product.description,
+      product.image
+    );
   }
 
   addToCart() {
     if (!this.product) return;
     console.log('Product:', this.product);
 
-    const cart = ShoppingCart.getInstance();
-    cart.addProduct(this.product);
+    App.addProductToCart(this.product);
   }
 
   render() {

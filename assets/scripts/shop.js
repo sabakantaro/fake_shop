@@ -1,11 +1,11 @@
-import { ProductList } from './productList.js';
-import ShoppingCart from './shoppingCart.js';
+import ProductList from './productList.js';
+import Cart from './shoppingCart.js';
 
 export default class Shop {
   async render() {
     const renderHook = document.getElementById('app');
 
-    const cart = new ShoppingCart();
+    const cart = Cart;
     const cartEl = cart.render();
     renderHook.append(cartEl);
 
