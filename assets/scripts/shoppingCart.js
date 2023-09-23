@@ -1,27 +1,24 @@
 class ShoppingCart {
   constructor() {
     this.items = [];
+    this.total = 0;
   }
 
   getTotal() {
-    if (this.items.length === 0) return 0;
-
-    const sum = this.items.reduce((acc, item) => {
-      return acc + item?.price;
-    }, 0);
-    return sum ? sum : 0;
+    return this.total.toFixed(2);
   }
 
-  setTotal() {
-    const total = document.querySelector('h2');
-    total.textContent = `Total: $${this.getTotal()}`;
+  setTotal(price) {
+    this.total += price;
+    const cartTotal = document.querySelector('h2');
+    cartTotal.textContent = `Total: \$${this.getTotal()}`;
   }
 
   addProduct(product) {
     if (!product) return;
 
     this.items.push(product);
-    this.setTotal();
+    this.setTotal(product.price);
     console.log('Items:', this.items);
   }
 
@@ -40,7 +37,8 @@ class ShoppingCart {
         return;
       }
       this.items = [];
-      this.setTotal();
+      this.total = 0;
+      this.setTotal(this.total);
 
       window.alert('Order placed!');
     });
